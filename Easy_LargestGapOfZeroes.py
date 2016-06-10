@@ -1,4 +1,8 @@
-"""
+
+#Author : Nicolas Lopez
+
+"""    CODING PROBLEM FROM CODILITY.COM
+
 Find Largest Gap (number of consecutive 0's) in the binary representation of a number
 """
 
