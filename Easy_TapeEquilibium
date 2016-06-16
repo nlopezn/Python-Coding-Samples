@@ -49,7 +49,12 @@ Elements of input arrays can be modified.
 """
 
 
-# input a list of nubmers. Take list and make a differnce list 
+# Method: take input list. Split list into 2 parts (first half, second half). Find the sum of first half. Find sum of second half. 
+# Find the absolute difference of first half and second half | first half - second half | , for all of the possible splits. 
+# Find the smallest absolute difference from the list of differences 
+
+
+import numpy as np
 
 
 def getMinimumDifference(input_list):
@@ -78,7 +83,7 @@ def getDifferencesList(input_list):
     for number in range(len(input_list)):
         first_sum = sum(input_list[:number+1])
         second_sum = sum(input_list[number+1:])
-        difference = first_sum - second_sum 
+        difference = np.abs(first_sum - second_sum)
         
         list_of_differences.append(difference)
         
