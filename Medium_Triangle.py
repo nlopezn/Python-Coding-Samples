@@ -3,6 +3,10 @@
 
 # Author: Nicolas Lopez
 
+
+
+#  Use sorted() function to do the sorting
+
 def solution(A):
 
     if A==[] or len(A)<3:
@@ -15,13 +19,13 @@ def solution(A):
         B = orderedA[index+1]
         C = orderedA[index +2]
         
-        if A+B>C:
-            return 1
+        if A+B>C:    # It is only necessary to check this condition. Since the array is ordered, C>A and C>B. So C+B>A, and C+A>B
+            return 1 
        
             
     return 0 
     
-# Alternatively could also used sorted() function to do the sorting instead of own merge-sort algorithm
+# Alternatively can write own merge-sort algorithm
     
     
 def getOrdered(A):
