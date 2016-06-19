@@ -35,8 +35,6 @@ Elements of input arrays can be modified.
 
 """
 
-
-
 def findMissingElement(A):
     initial_array = range(len(A)+2)
     
