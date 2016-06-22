@@ -11,7 +11,8 @@ def solution(A):
 
     if A==[] or len(A)<3:
         return 0 
- 
+        
+    #orderedA = sorted(A)      
     orderedA = getOrdered(A)
     
     for index in range(len(orderedA)-2):
@@ -58,22 +59,22 @@ def getOrdered(A):
         return total_ordered_list
         
 def merge(A,B):
-    temp = []
+    temp_array = []
     pos_a = 0
     pos_b = 0
     
     for a in A:
         for b in B[pos_b:]:
             if b<a:
-                temp.append(b)
+                temp_array.append(b)
                 pos_b = pos_b+1 
             elif a<=b:
-                temp.append(a)
+                temp_array.append(a)
                 pos_a = pos_a +1 
                 break
     if pos_a<len(A):
-        temp = temp + A[pos_a:]
+        temp_array = temp_array + A[pos_a:]
     if pos_b<len(B):
-        temp = temp + B[pos_b:]
+        temp_array = temp_array + B[pos_b:]
         
-    return temp
+    return temp_array
