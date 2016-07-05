@@ -40,7 +40,7 @@ def solution(A):
         return 0 
         
     #orderedA = sorted(A)      # doing a sort from smallest to largest is the heart of the solution. 
-    orderedA = getOrdered(A)
+    orderedA = sort(A)
     
     for index in range(len(orderedA)-2):
         A = orderedA[index]
@@ -55,53 +55,40 @@ def solution(A):
     
 # Alternatively can write own merge-sort algorithm
     
+def sort(array):
     
-def getOrdered(A):
+    size_array = len(array)
+    if size_array!=1:
+        mid_point = int(size_array/2)
+        A=array[:mid_point]
+        B=array[mid_point:]
+        A_sorted = sort(A)
+        B_sorted = sort(B) 
+        
+        return merge(A_sorted,B_sorted)
     
-    N = len(A)
-    
-    n = int(N/2)
-    
-    if N==1:
+    elif size_array==1:
         return A
-    
-    temp_list = []    
-    if N==2:
-        if A[1]<A[0]:
-            temp_list.append(A[1])
-            temp_list.append(A[0])
-            return temp_list
-            
-        else:
-            return A
-    if N>2:
-        half_1 = A[:n]
-        half_2 = A[n:]
-        
-        half_1_ordered = getOrdered(half_1)
-        half_2_ordered = getOrdered( half_2)
-        
-        total_ordered_list = merge(half_1_ordered,half_2_ordered)
-        
-        return total_ordered_list
         
 def merge(A,B):
-    temp_array = []
-    pos_a = 0
-    pos_b = 0
     
-    for a in A:
-        for b in B[pos_b:]:
-            if b<a:
-                temp_array.append(b)
-                pos_b = pos_b+1 
-            elif a<=b:
-                temp_array.append(a)
-                pos_a = pos_a +1 
-                break
-    if pos_a<len(A):
-        temp_array = temp_array + A[pos_a:]
-    if pos_b<len(B):
-        temp_array = temp_array + B[pos_b:]
+    merged_list =[]
+    size_A=len(A)
+    size_B=len(B)
+    
+    index_A=0
+    index_B=0    
+    
+    while index_A<size_A and index_B<size_B:
+        if A[index_A]<=B[index_B]:
+            merged_list.append(A[index_A])
+            index_A+=1
+        else:
+            merged_list.append(B[index_B])
+            index_B+=1
+    if index_A==size_A:
+        merged_list = merged_list + B[index_B:]
+    elif index_B==size_B:
+        merged_list = merged_list + A[index_A:]
         
-    return temp_array
+    return merged_list
